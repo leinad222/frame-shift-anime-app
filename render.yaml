@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: frame-shift-preview
+    runtime: node
+    plan: free
+    buildCommand: pnpm install --frozen-lockfile && pnpm build
+    startCommand: node .output/server/index.mjs
+    healthCheckPath: /api/products
+    envVars:
+      - key: NODE_VERSION
+        value: 24.18.0
